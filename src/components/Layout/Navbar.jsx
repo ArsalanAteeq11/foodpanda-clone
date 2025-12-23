@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const navLinks = [
@@ -25,14 +26,14 @@ export default function Navbar() {
       <div className="hidden md:flex items-center gap-4">
         <div className="hidden md:flex items-center gap-4 lg:gap-8">
           {navLinks.map((link, i) => (
-            <a
+            <Link
               key={i}
-              href={link.path}
+              to={link.path}
               className="group flex font-semibold flex-col gap-0.5"
             >
               {link.name}
               <div className="h-0.5 w-0 group-hover:w-full transition-all duration-300" />
-            </a>
+            </Link>
           ))}
         </div>
         <button className="px-8 py-2.5 cursor-pointer rounded-full font-semibold ml-4 bg-[#ff2b85] text-white transition-all duration-500 ">
@@ -87,11 +88,10 @@ export default function Navbar() {
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         </button>
-
         {navLinks.map((link, i) => (
-          <a key={i} href={link.path} onClick={() => setIsMenuOpen(false)}>
+          <Link key={i} to={link.path} onClick={() => setIsMenuOpen(false)}>
             {link.name}
-          </a>
+          </Link>
         ))}
 
         <button className="border px-4 py-1 text-sm font-light rounded-full cursor-pointer transition-all">
