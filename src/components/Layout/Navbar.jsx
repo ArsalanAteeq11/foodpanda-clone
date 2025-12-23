@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const navLinks = [
@@ -26,14 +26,14 @@ export default function Navbar() {
       <div className="hidden md:flex items-center gap-4">
         <div className="hidden md:flex items-center gap-4 lg:gap-8">
           {navLinks.map((link, i) => (
-            <Link
-              key={i}
+            <NavLink
               to={link.path}
-              className="group flex font-semibold flex-col gap-0.5"
+              className={({ isActive }) =>
+                `font-semibold ${isActive ? "text-[#ff2b85]" : ""}`
+              }
             >
               {link.name}
-              <div className="h-0.5 w-0 group-hover:w-full transition-all duration-300" />
-            </Link>
+            </NavLink>
           ))}
         </div>
         <button className="px-8 py-2.5 cursor-pointer rounded-full font-semibold ml-4 bg-[#ff2b85] text-white transition-all duration-500 ">
@@ -89,9 +89,15 @@ export default function Navbar() {
           </svg>
         </button>
         {navLinks.map((link, i) => (
-          <Link key={i} to={link.path} onClick={() => setIsMenuOpen(false)}>
+          <NavLink
+            to={link.path}
+            className={({ isActive }) =>
+              `font-semibold ${isActive ? "text-[#ff2b85]" : ""}`
+            }
+            onClick={() => setIsMenuOpen(false)}
+          >
             {link.name}
-          </Link>
+          </NavLink>
         ))}
 
         <button className="border px-4 py-1 text-sm font-light rounded-full cursor-pointer transition-all">
