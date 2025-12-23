@@ -15,7 +15,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
-    <nav className="shadow w-full h-16.75 flex items-center justify-between px-4 md:px-16 lg:px-24 transition-all duration-500 z-50 ">
+    <nav className="shadow-md w-full h-16.75 flex items-center justify-between px-4 md:px-16 lg:px-24 transition-all duration-500 ">
       {/* Logo */}
       <img
         src="./images/foodpanda_logo_2023.svg"
@@ -24,8 +24,8 @@ export default function Navbar() {
       />
 
       {/* Desktop Right */}
-      <div className="hidden md:flex items-center gap-4">
-        <div className="hidden md:flex items-center gap-4 lg:gap-8">
+      <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden md:flex items-center text-sm gap-4">
           {navLinks.map((link, i) => (
             <NavLink
               key={i}
@@ -38,7 +38,7 @@ export default function Navbar() {
             </NavLink>
           ))}
         </div>
-        <button className="px-8 py-2.5 cursor-pointer rounded-full font-semibold ml-4 bg-[#ff2b85] text-white transition-all duration-500 ">
+        <button className="px-6 py-2.5 cursor-pointer rounded-full text-sm font-semibold ml-4 bg-[#ff2b85] text-white transition-all duration-500 ">
           Choose loacation
         </button>
         <svg
@@ -54,7 +54,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu Button */}
-      <div className="flex items-center gap-3 md:hidden">
+      <div className="flex items-center gap-3 lg:hidden">
         <svg
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="h-6 w-6 cursor-pointer"
@@ -71,7 +71,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed top-0 left-0 w-full h-screen bg-white text-base flex flex-col md:hidden items-center justify-center gap-6 font-medium text-gray-800 transition-all duration-500 ${
+        className={`fixed z-50 top-0 left-0 w-full h-screen bg-white text-base flex flex-col lg:hidden items-center justify-center gap-6 font-medium text-gray-800 transition-all duration-500 ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -102,10 +102,6 @@ export default function Navbar() {
             {link.name}
           </NavLink>
         ))}
-
-        <button className="border px-4 py-1 text-sm font-light rounded-full cursor-pointer transition-all">
-          New Launch
-        </button>
 
         <button className="bg-black text-white px-8 py-2.5 rounded-full transition-all duration-500">
           Login
