@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Hero({
   type = "video", // "video" | "image"
-  src, // video ya image source
+  src,
   heading,
   button,
   subText,
@@ -56,7 +56,7 @@ export default function Hero({
       </div>
 
       {/* TEXT SECTION (OPTIONAL) */}
-      {subText.length > 0 && (
+      {subText?.length > 0 && (
         <div className="my-20 px-10 max-w-7xl ">
           {subText.map((item, index) => (
             <p key={index} className={item.className}>

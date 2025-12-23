@@ -8,6 +8,7 @@ export default function Navbar() {
     { name: "Newsroom", path: "/newsroom" },
     { name: "Partners", path: "/partners" },
     { name: "Panda Ads", path: "/panda-ads" },
+    { name: "Contact", path: "/contact" },
     { name: "Careers", path: "/careers" },
   ];
 
@@ -27,6 +28,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-4 lg:gap-8">
           {navLinks.map((link, i) => (
             <NavLink
+              key={i}
               to={link.path}
               className={({ isActive }) =>
                 `font-semibold ${isActive ? "border-b-2 border-[#ff2b85]" : ""}`
@@ -90,6 +92,7 @@ export default function Navbar() {
         </button>
         {navLinks.map((link, i) => (
           <NavLink
+            key={i}
             to={link.path}
             className={({ isActive }) =>
               `font-semibold ${isActive ? "border-t-2 border-[#ff2b85]" : ""}`
