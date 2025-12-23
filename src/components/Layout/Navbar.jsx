@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const navLinks = [
@@ -7,8 +7,8 @@ export default function Navbar() {
     { name: "About", path: "/about-us" },
     { name: "Newsroom", path: "/newsroom" },
     { name: "Partners", path: "/partners" },
-    { name: "Panda Ads", path: "/" },
-    { name: "Careers", path: "/" },
+    { name: "Panda Ads", path: "/panda-ads" },
+    { name: "Careers", path: "/careers" },
   ];
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -29,7 +29,7 @@ export default function Navbar() {
             <NavLink
               to={link.path}
               className={({ isActive }) =>
-                `font-semibold ${isActive ? "text-[#ff2b85]" : ""}`
+                `font-semibold ${isActive ? "border-b-2 border-[#ff2b85]" : ""}`
               }
             >
               {link.name}
@@ -92,7 +92,7 @@ export default function Navbar() {
           <NavLink
             to={link.path}
             className={({ isActive }) =>
-              `font-semibold ${isActive ? "text-[#ff2b85]" : ""}`
+              `font-semibold ${isActive ? "border-t-2 border-[#ff2b85]" : ""}`
             }
             onClick={() => setIsMenuOpen(false)}
           >
