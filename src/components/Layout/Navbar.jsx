@@ -7,7 +7,7 @@ export default function Navbar() {
     { name: "About", path: "/about-us" },
     { name: "Newsroom", path: "/newsroom" },
     { name: "Partners", path: "/partners" },
-    { name: "Panda Ads", path: "/panda-ads" },
+    { name: "Panda Ads", path: "/http://panda-ads.vercel.app/" },
     { name: "Contact", path: "/contact" },
     { name: "Careers", path: "/careers" },
   ];
