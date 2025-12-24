@@ -7,7 +7,12 @@ export default function Navbar() {
     { name: "About", path: "/about-us" },
     { name: "Newsroom", path: "/newsroom" },
     { name: "Partners", path: "/partners" },
-    { name: "Panda Ads", path: "/http://panda-ads.vercel.app/" },
+    {
+      name: "Panda Ads",
+      path: "https://panda-ads.vercel.app/",
+      type: "external",
+    },
+
     { name: "Contact", path: "/contact" },
     { name: "Careers", path: "/careers" },
   ];
@@ -26,17 +31,31 @@ export default function Navbar() {
       {/* Desktop Right */}
       <div className="hidden lg:flex items-center gap-4">
         <div className="hidden md:flex items-center text-sm gap-4">
-          {navLinks.map((link, i) => (
-            <NavLink
-              key={i}
-              to={link.path}
-              className={({ isActive }) =>
-                `font-semibold ${isActive ? "border-b-2 border-[#ff2b85]" : ""}`
-              }
-            >
-              {link.name}
-            </NavLink>
-          ))}
+          {navLinks.map((link, i) =>
+            link.type === "external" ? (
+              <a
+                key={i}
+                href={link.path}
+                target="_self" // same tab
+                rel="noreferrer"
+                className="font-semibold"
+              >
+                {link.name}
+              </a>
+            ) : (
+              <NavLink
+                key={i}
+                to={link.path}
+                className={({ isActive }) =>
+                  `font-semibold ${
+                    isActive ? "border-b-2 border-[#ff2b85]" : ""
+                  }`
+                }
+              >
+                {link.name}
+              </NavLink>
+            )
+          )}
         </div>
         <button className="px-6 py-2.5 cursor-pointer rounded-full text-sm font-semibold ml-4 bg-[#ff2b85] text-white transition-all duration-500 ">
           Choose loacation
@@ -90,18 +109,31 @@ export default function Navbar() {
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         </button>
-        {navLinks.map((link, i) => (
-          <NavLink
-            key={i}
-            to={link.path}
-            className={({ isActive }) =>
-              `font-semibold ${isActive ? "border-t-2 border-[#ff2b85]" : ""}`
-            }
-            onClick={() => setIsMenuOpen(false)}
-          >
-            {link.name}
-          </NavLink>
-        ))}
+        {navLinks.map((link, i) =>
+          link.type === "external" ? (
+            <a
+              key={i}
+              href={link.path}
+              target="_self"
+              rel="noreferrer"
+              onClick={() => setIsMenuOpen(false)}
+              className="font-semibold"
+            >
+              {link.name}
+            </a>
+          ) : (
+            <NavLink
+              key={i}
+              to={link.path}
+              onClick={() => setIsMenuOpen(false)}
+              className={({ isActive }) =>
+                `font-semibold ${isActive ? "border-t-2 border-[#ff2b85]" : ""}`
+              }
+            >
+              {link.name}
+            </NavLink>
+          )
+        )}
 
         <button className="bg-black text-white px-8 py-2.5 rounded-full transition-all duration-500">
           Login
