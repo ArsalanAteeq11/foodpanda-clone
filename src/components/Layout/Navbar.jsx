@@ -14,7 +14,11 @@ export default function Navbar() {
     },
 
     { name: "Contact", path: "/contact" },
-    { name: "Careers", path: "/careers" },
+    {
+      name: "Careers",
+      path: "https://careersfoodpanda.vercel.app/",
+      type: "external",
+    },
   ];
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
